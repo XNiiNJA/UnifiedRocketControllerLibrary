@@ -13,3 +13,25 @@ Logging features.
 
 
 Data input and output devices. 
+
+
+
+Controller Algorithms.
+* URCL supports common closed loop controller algorithms. 
+    * **PID** - PID controllers are an extremely common control algorithm. URCL supports them and a lot of the caveats that come with using PID controllers. URCL supports: 
+        * Any combination of P, I, and D.
+        * Anti-Windup using max and min possible values.
+        * Applying new setpoint limits on the fly. 
+        * Applying new setpoints on the fly. 
+    * **BANG-BANG** - You may determine bang bang accuracy is all the accuracy you need. In order to use a bang-bang controller, Simply set up a loggable variable to watch for go over, under, between, or outside certain values. Once this state happens, the bang-bang controller will give an active output for you to apply to whatever it is you want to control. You can also feed in any variable you define in your program for more complicated control schemes. 
+    
+* URCL supports open loop control as well. 
+    * **Timer** - Setting up a timer, while trivial, can be a little annoying. The timer URCL contains supports:
+        * Setting different times with milliseconds and nanoseconds.
+        * Rolling over the timer after overflowing. 
+        * One-shot or repeating.
+        * Activating and deactivating the timer. 
+
+        
+
+Filter Algorithms.
