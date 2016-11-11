@@ -13,8 +13,20 @@ Logging features.
 
 
 Data input and output devices. 
-
-
+* There exist different types of input and output devices. 
+    * Stream: A stream of bytes such as an Xbee radio module or a serial communication device. URCL supports:
+        * Setting a custom input and output buffer maximum size. 
+        * Growable and shrinkable buffer sizes to save on available memory. 
+        * Formatted output for easy to use menu systems and formatted data. 
+    * Switches: A discrete on/off input signal. 
+        * Read the input on/off signal. 
+        * Switch values are loggable by the Logger class. 
+    * Discrete output: A discrete on/off output signal. Such as a light. 
+        * Set the input/output value. 
+        * Output value is available for logging. 
+    * Analog input:
+    * Analog output:
+    
 
 Controller Algorithms.
 * URCL supports common closed loop controller algorithms. 
@@ -23,15 +35,16 @@ Controller Algorithms.
         * Anti-Windup using max and min possible values.
         * Applying new setpoint limits on the fly. 
         * Applying new setpoints on the fly. 
-    * **BANG-BANG** - You may determine bang bang accuracy is all the accuracy you need. In order to use a bang-bang controller, Simply set up a loggable variable to watch for go over, under, between, or outside certain values. Once this state happens, the bang-bang controller will give an active output for you to apply to whatever it is you want to control. You can also feed in any variable you define in your program for more complicated control schemes. 
+    * **BANG-BANG** - You may determine bang bang accuracy is all the accuracy you need. In order to use a bang-bang controller, Simply set up a loggable variable to watch for go over, under, between, or outside certain values. Once this state happens, the bang-bang controller will give an active output for you to apply to whatever it is you want to control. The "loggable variable" part means any of the variables that you can setup to be output to a logging device automatically. This is almost any variable URCL has an internal representation of. You can also feed in any variable you define in your program for more complicated control schemes. 
     
 * URCL supports open loop control as well. 
-    * **Timer** - Setting up a timer, while trivial, can be a little annoying. The timer URCL contains supports:
+    * **Timer** - Setting up a timer from scratch, while trivial, can be a little annoying. The timer URCL contains supports:
         * Setting different times with milliseconds and nanoseconds.
-        * Rolling over the timer after overflowing. 
+        * Handling the time value rolling over after overflowing. 
         * One-shot or repeating.
         * Activating and deactivating the timer. 
-
-        
+        * Multiple timer instances.
 
 Filter Algorithms.
+* Fill this in later...
+
