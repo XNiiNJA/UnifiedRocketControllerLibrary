@@ -3,7 +3,7 @@ A library designed from the bottom up to facilitate in the development of flight
 
 ##Features
 
-Logging features. 
+####Logging
 * Logging is set up in a hierarchical fashion. Think JSON. There can be "objects" that are given attributes. 
   * For example, we can have a "Rocket" object. This object can be given the attribute "Pitch". The "Rocket" object can also be the parent of another object. For example, "Pitot Tube". This "Pitot Tube" object can be given attributes "Pressure" and "Speed". In this way, every piece of information about the rocket can be logged and found extremely easily. 
   * This brings in concerns about time based data. Clearly JSON and XML are terrible for this type of data. So, we use CSV files with headers that trace the parent->child relationships. For example, with the pitot tube example above, we would have "Rocket::Pitot Tube::Pressure". This should also let the CSV file's columns be alphabetized in order to clump together related information.  
@@ -12,23 +12,28 @@ Logging features.
   
 
 
-Data input and output devices. 
+####Data I/O devices
 * There exist different types of input and output devices. 
     * Stream: A stream of bytes such as an Xbee radio module or a serial communication device. URCL supports:
         * Setting a custom input and output buffer maximum size. 
         * Growable and shrinkable buffer sizes to save on available memory. 
         * Formatted output for easy to use menu systems and formatted data. 
+        * Logging information can be output to a stream.
     * Switches: A discrete on/off input signal. 
         * Read the input on/off signal. 
+        * Maintains current state of signal.
+        * Supports toggling. (EX: Push button)
         * Switch values are loggable by the Logger class. 
     * Discrete output: A discrete on/off output signal. Such as a light. 
         * Set the input/output value. 
         * Output value is available for logging. 
     * Analog input:
     * Analog output:
+    * Storage Device: A device that is capable of saving  
+        * 
     
 
-Controller Algorithms.
+####Controller Algorithms
 * URCL supports common closed loop controller algorithms. 
     * **PID** - PID controllers are an extremely common control algorithm. URCL supports them and a lot of the caveats that come with using PID controllers. URCL supports: 
         * Any combination of P, I, and D.
@@ -45,6 +50,14 @@ Controller Algorithms.
         * Activating and deactivating the timer. 
         * Multiple timer instances.
 
-Filter Algorithms.
-* Fill this in later...
-
+####Sensor Fusion
+* URCL supports common sensor fusion techniques in order to put together a more accurate state of the rocket. 
+* URCL can take in all sorts of information about your rocket in order predict with. Including:
+    * Mass
+    * Drag Coefficient
+    * Frontal reference area
+* Along with these data, URCL has internal variables including: 
+    * Orientation (Roll, Pitch, Yaw)
+    * Airspeed (Pitot tube)
+    * Air pressure (Altimeter)
+    * Acceleration
