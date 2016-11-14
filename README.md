@@ -42,7 +42,7 @@ A library designed from the bottom up to facilitate in the development of flight
         * Applying new setpoint limits on the fly. 
         * Applying new setpoints on the fly. 
     * **BANG-BANG** - You may determine bang bang accuracy is all the accuracy you need. In order to use a bang-bang controller, Simply set up a loggable variable to watch for go over, under, between, or outside certain values. Once this state happens, the bang-bang controller will give an active output for you to apply to whatever it is you want to control. The "loggable variable" part means any of the variables that you can setup to be output to a logging device automatically. This is almost any variable URCL has an internal representation of. You can also feed in any variable you define in your program for more complicated control schemes. 
-* Controller algorithms can be fed controller algorithms externally in order to support any process that needs to be controlled. The user simply feeds in the current error of the process when it is calculated, and the controller will keep track of current states and output. 
+* Controller algorithms can be fed errors externally in order to support any process that needs to be controlled. The user simply feeds in the current error of the process when it is calculated, and the controller will keep track of current states and output. 
     
 * URCL supports open loop control as well. 
     * **Timer** - Setting up a timer from scratch, while trivial, can be a little annoying. The timer URCL contains supports:
