@@ -75,3 +75,4 @@ A library designed from the bottom up to facilitate in the development of flight
     * Airspeed (Pitot tube)
     * Air pressure (Altimeter)
     * Acceleration
+* The internal data comes from the sensors discussed above. 
