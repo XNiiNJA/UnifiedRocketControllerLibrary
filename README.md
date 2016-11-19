@@ -27,11 +27,23 @@ A library designed from the bottom up to facilitate in the development of flight
     * Discrete output: A discrete on/off output signal. Such as a light. 
         * Set the input/output value. 
         * Output value is available for logging. 
-    * Analog input:
-    * Analog output:
     * Storage Device: A device that is capable of saving  
         * 
     
+
+###Sensors
+* Sensors are different from data I/O devices. Data I/O is used to input data from other systems or users, and output data to other systems or users. Sensors create the data. That being said, not all sensors are created equally. We could list off sensors all day and someone would still have an unsupported sensor. For that reason, the Sensor class is extensible. The Sensor class is simply a virtual function that includes functions that all sensors will need. Namely, getting the output of the sensor and the name of the sensor. This allows the user to perform data dumps very easily without having to go to a number of other places to get all of the data. 
+
+* The library supports a number of extended Sensor classes right out of the box. Namely:
+  * Magnetometer
+  * Accelerometer
+  * Gyroscope
+  * Altimeter
+  * Pitot Tube
+  
+* You may have noticed, the above classes are only *abstractions* of the actual sensor implementation. That's correct. The sensor type classes do not retrieve the data from the sensor, they only define the functions that would be helpful while using the sensor.
+
+* Sensor fusion is not performed in these classes, sensor fusion is explained below. 
 
 ####Controller Algorithms
 
