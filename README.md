@@ -1,9 +1,9 @@
 # UnifiedRocketControllerLibrary
 A library designed from the bottom up to facilitate in the development of flight controller software for High Powered Rockets.
 
-##Features
+## Features
 
-####Logging
+#### Logging
 * Logging is set up in a hierarchical fashion. Think JSON. There can be "objects" that are given attributes. 
   * For example, we can have a "Rocket" object. This object can be given the attribute "Pitch". The "Rocket" object can also be the parent of another object. For example, "Pitot Tube". This "Pitot Tube" object can be given attributes "Pressure" and "Speed". In this way, every piece of information about the rocket can be logged and found extremely easily. 
   * This brings in concerns about time based data. Clearly JSON and XML are terrible for this type of data. So, we use CSV files with headers that trace the parent->child relationships. For example, with the pitot tube example above, we would have "Rocket::Pitot Tube::Pressure". This should also let the CSV file's columns be alphabetized in order to clump together related information.  
@@ -12,7 +12,7 @@ A library designed from the bottom up to facilitate in the development of flight
   
 
 
-####Data I/O devices
+#### Data I/O devices
 * There exist different types of input and output devices. 
     * Stream: A stream of bytes such as an Xbee radio module or a serial communication device. URCL supports:
         * Setting a custom input and output buffer maximum size. 
@@ -31,7 +31,7 @@ A library designed from the bottom up to facilitate in the development of flight
         * 
     
 
-###Sensors
+### Sensors
 * Sensors are different from data I/O devices. Data I/O is used to input data from other systems or users, and output data to other systems or users. Sensors create the data. That being said, not all sensors are created equally. We could list off sensors all day and someone would still have an unsupported sensor. For that reason, the Sensor class is extensible. The Sensor class is simply a virtual function that includes functions that all sensors will need. Namely, getting the output of the sensor and the name of the sensor. This allows the user to perform data dumps very easily without having to go to a number of other places to get all of the data. 
 
 * The library supports a number of extended Sensor classes right out of the box. Namely:
@@ -45,7 +45,7 @@ A library designed from the bottom up to facilitate in the development of flight
 
 * Sensor fusion is not performed in these classes, sensor fusion is explained below. 
 
-####Controller Algorithms
+#### Controller Algorithms
 
 * URCL supports common closed loop controller algorithms. 
     * **PID** - PID controllers are an extremely common control algorithm. URCL supports them and a lot of the caveats that come with using PID controllers. URCL supports: 
@@ -64,7 +64,7 @@ A library designed from the bottom up to facilitate in the development of flight
         * Activating and deactivating the timer. 
         * Multiple timer instances.
 
-####Sensor Fusion
+#### Sensor Fusion
 * URCL supports common sensor fusion techniques in order to put together a more accurate state of the rocket. 
 * URCL can take in all sorts of information about your rocket in order predict with. Including:
     * Mass
